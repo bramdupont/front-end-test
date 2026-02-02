@@ -1,17 +1,23 @@
 "use client";
-import {useState, useMemo} from "react";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 import { Filters } from "@/components/Filters";
 import { Pagination } from "@/components/Pagination";
-import { User, CreateUserAction } from "@/types";
-import Link from "next/link";
-import {getTypeStyles} from "@/utilities/getTypeStyles";
-import {getStatusStyles} from "@/utilities/getStatusStyles";
-import {truncateText} from "@/utilities/truncateText";
 import { useDebounce } from "@/hooks/useDebounce";
+import { CreateUserAction, User } from "@/types";
+import { getStatusStyles } from "@/utilities/getStatusStyles";
+import { getTypeStyles } from "@/utilities/getTypeStyles";
+import { truncateText } from "@/utilities/truncateText";
 
 const MAX_ITEMS_PER_PAGE = 12;
 
-export const PageClient = ({ users, createAction }: { users: User[]; createAction: CreateUserAction }) => {
+export const PageClient = ({
+	users,
+	createAction,
+}: {
+	users: User[];
+	createAction: CreateUserAction;
+}) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [openUserModal, setOpenUserModal] = useState(false);
 
@@ -20,23 +26,37 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 	const [selectedState, setSelectedState] = useState("all");
 	const [selectedCompany, setSelectedCompany] = useState("all");
 
-	// Debounce search query to avoid excessive filtering
 	const debouncedSearchQuery = useDebounce(searchQuery, 300);
 
 	const filteredUsers = useMemo(() => {
-		return users.filter(user => {
-			const matchesSearch = debouncedSearchQuery === "" ||
-				user.firstName?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-				user.lastName?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-				user.email?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+		return users.filter((user) => {
+			const matchesSearch =
+				debouncedSearchQuery === "" ||
+				user.firstName
+					?.toLowerCase()
+					.includes(debouncedSearchQuery.toLowerCase()) ||
+				user.lastName
+					?.toLowerCase()
+					.includes(debouncedSearchQuery.toLowerCase()) ||
+				user.email
+					?.toLowerCase()
+					.includes(debouncedSearchQuery.toLowerCase()) ||
 				user.phone?.toLowerCase().includes(debouncedSearchQuery.toLowerCase());
 			const matchesType = selectedType === "all" || user.type === selectedType;
-			const matchesState = selectedState === "all" || user.status === selectedState;
-			const matchesCompany = selectedCompany === "all" || user.companyName === selectedCompany;
+			const matchesState =
+				selectedState === "all" || user.status === selectedState;
+			const matchesCompany =
+				selectedCompany === "all" || user.companyName === selectedCompany;
 
 			return matchesSearch && matchesType && matchesState && matchesCompany;
 		});
-	}, [users, debouncedSearchQuery, selectedType, selectedState, selectedCompany]);
+	}, [
+		users,
+		debouncedSearchQuery,
+		selectedType,
+		selectedState,
+		selectedCompany,
+	]);
 	const startIndex = (currentPage - 1) * MAX_ITEMS_PER_PAGE;
 	const endIndex = startIndex + MAX_ITEMS_PER_PAGE;
 	const paginatedUsers = filteredUsers?.slice(startIndex, endIndex) || [];
@@ -49,7 +69,6 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 		setCurrentPage(1);
 	};
 
-	// Check if search is being debounced
 	const isSearching = searchQuery !== debouncedSearchQuery;
 
 	return (
@@ -128,10 +147,12 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 										<tr key={user.id} className="hover:bg-neutral-400/10">
 											<td className="py-4 pr-3 pl-4 text-sm whitespace-nowrap text-white sm:pl-2 cursor-pointer">
 												<Link href={`/archive/${user.id}/`}>
-												<p className="text-md">
-													{user.firstName} {user.lastName}
-												</p>
-												<p className="text-sm text-neutral-400">{user.email}</p>
+													<p className="text-md">
+														{user.firstName} {user.lastName}
+													</p>
+													<p className="text-sm text-neutral-400">
+														{user.email}
+													</p>
 												</Link>
 											</td>
 											<td className="px-3 py-4 text-sm whitespace-nowrap text-white">
