@@ -4,14 +4,27 @@ import { User } from "@/types";
 import { getTypeStyles } from "@/utilities/getTypeStyles";
 import { getStatusStyles } from "@/utilities/getStatusStyles";
 import { useToast } from "@/components/ToastProvider";
+import {useState, useTransition} from 'react'
+import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import {XMarkIcon} from '@heroicons/react/24/outline'
 
-export const PageClient = ({ user, deleteUserAction }: { user: User; deleteUserAction: () => Promise<unknown> }) => {
+export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user: User; deleteUserAction: () => Promise<unknown>; updateUserAction: (document: FormData) => Promise<{
+		success: boolean;
+		user: any;
+		error?: undefined;
+	} | {
+		success: boolean;
+		error: string;
+		user?: undefined;
+	}>}) => {
 	const router = useRouter();
 	const { showToast } = useToast();
+	const [openPersonal, setOpenPersonal] = useState(false)
+	const [openCompany, setOpenCompany] = useState(false)
+	const [isUpdatingDocument, startUpdatingDocument] = useTransition();
 
 	const handleDeleteClick = async (e: React.MouseEvent) => {
 		e.preventDefault();
-		console.log('delete clicked');
 
 		try {
 			const result = await deleteUserAction() as { success: boolean };
@@ -39,6 +52,269 @@ export const PageClient = ({ user, deleteUserAction }: { user: User; deleteUserA
 				type: 'error'
 			});
 		}
+	}
+
+	const handleUpdateUser = (document: FormData) => {
+		startUpdatingDocument(async () => {
+			try {
+				const result = await updateUserAction(document) as { success: boolean };
+
+				if (result.success) {
+					showToast({
+						title: 'User updated',
+						message: `${user.firstName} ${user.lastName} has been successfully updated.`,
+						type: 'success'
+					});
+
+				} else {
+					showToast({
+						title: 'Update failed',
+						message: 'Failed to update user. Please try again.',
+						type: 'error'
+					});
+				}
+			} catch (error) {
+				console.error('Update error:', error);
+				showToast({
+					title: 'Error',
+					message: 'An error occurred while updating the user.',
+					type: 'error'
+				});
+			}
+		});
+	}
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		const id = e.currentTarget.getAttribute('id');
+		const formData = new FormData(e.currentTarget);
+		handleUpdateUser(formData);
+		if(id === 'personal') setOpenPersonal(false)
+		else setOpenCompany(false);
+		e.currentTarget.reset();
+	};
+
+	const EditPersonalInformation = ({open, onOpenChange}: {open: boolean; onOpenChange: (state: boolean) => void}) => {
+			return (
+					<Dialog open={open} onClose={onOpenChange} className="relative z-10">
+						<DialogBackdrop
+							transition
+							className="fixed inset-0 bg-black/80 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+						/>
+
+						<div className="fixed inset-0 z-10 overflow-y-auto">
+							<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+								<DialogPanel
+									transition
+									className="relative container mx-auto transform overflow-hidden rounded-lg bg-neutral-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 max-w-2xl sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+								>
+									<div className="flex items-center justify-between">
+										<DialogTitle as="h3" className="text-base font-semibold text-white">
+											Edit Personal Information
+										</DialogTitle>
+										<button
+											type="button"
+											onClick={() => onOpenChange(false)}
+											className="text-white border p-3 border-neutral-400 rounded-md"
+										>
+											<XMarkIcon
+												aria-hidden="true"
+												className="size-3"
+											/>
+										</button>
+									</div>
+									<form onSubmit={handleSubmit} id="personal" className="mt-8 space-y-4">
+										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="firstName">
+												First name
+											</label>
+											<input
+												type="text"
+												id="firstName"
+												name="firstName"
+												defaultValue={user.firstName}
+												className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+											/>
+										</div>
+										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="lastName">
+												Last name
+											</label>
+											<input
+												type="text"
+												id="lastName"
+												name="lastName"
+												defaultValue={user.lastName}
+												className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+											/>
+										</div>
+										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="email">
+												Email
+											</label>
+											<input
+												type="email"
+												id="email"
+												name="email"
+												defaultValue={user.email}
+												className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+											/>
+										</div>
+										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="phone">
+												Phone
+											</label>
+											<input
+												type="tel"
+												id="phone"
+												name="phone"
+												defaultValue={user.phone}
+												className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+											/>
+										</div>
+										<div className="bg-neutral-800 text-white flex items-start px-4 py-3 rounded-md">
+											<label className="text-neutral-400 text-sm w-24 flex-shrink-0 pt-3" htmlFor="bio">
+												Bio
+											</label>
+											<textarea
+												id="bio"
+												name="bio"
+												rows={4}
+												defaultValue={user.bio}
+												className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm resize-none"
+											/>
+										</div>
+										<div className="mt-5 sm:mt-6">
+											<button
+												type="submit"
+												className="inline-flex w-full justify-center rounded-md cursor-pointer bg-primary px-3 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-90"
+											>
+												Update information
+											</button>
+										</div>
+									</form>
+								</DialogPanel>
+							</div>
+						</div>
+					</Dialog>
+			)
+	}
+	const EditCompanyInformation = ({open, onOpenChange}: {open: boolean; onOpenChange: (state: boolean) => void}) => {
+		return (
+				<Dialog open={open} onClose={onOpenChange} className="relative z-10">
+					<DialogBackdrop
+						transition
+						className="fixed inset-0 bg-black/80 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+					/>
+
+					<div className="fixed inset-0 z-10 overflow-y-auto">
+						<div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+							<DialogPanel
+								transition
+								className="relative container mx-auto transform overflow-hidden rounded-lg bg-neutral-900 px-4 pt-5 pb-4 text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 max-w-2xl sm:p-6 data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+							>
+								<div className="flex items-center justify-between">
+									<DialogTitle as="h3" className="text-base font-semibold text-white">
+										Edit Company Information
+									</DialogTitle>
+									<button
+										type="button"
+										onClick={() => onOpenChange(false)}
+										className="text-white border p-3 border-neutral-400 rounded-md"
+									>
+										<XMarkIcon
+											aria-hidden="true"
+											className="size-3"
+										/>
+									</button>
+								</div>
+								<form onSubmit={handleSubmit} id="company" className="mt-8 space-y-4">
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="companyName">
+											Name
+										</label>
+										<input
+											type="text"
+											id="companyName"
+											name="companyName"
+											defaultValue={user.companyName}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="country">
+											Country
+										</label>
+										<input
+											type="text"
+											id="country"
+											name="country"
+											defaultValue={user.country}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="city">
+											City
+										</label>
+										<input
+											type="text"
+											id="city"
+											name="city"
+											defaultValue={user.city}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="postalCode">
+											Postal code
+										</label>
+										<input
+											type="text"
+											id="postalCode"
+											name="postalCode"
+											defaultValue={user.postalCode}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="address">
+											Street
+										</label>
+										<input
+											type="text"
+											id="address"
+											name="address"
+											defaultValue={user.address}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
+										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="vatNumber">
+											VAT
+										</label>
+										<input
+											type="text"
+											id="vatNumber"
+											name="vatNumber"
+											defaultValue={user.vatNumber}
+											className="ms-4 p-3 w-full appearance-none bg-neutral-700 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-primary sm:text-sm"
+										/>
+									</div>
+									<div className="mt-5 sm:mt-6">
+										<button
+											type="submit"
+											className="inline-flex w-full justify-center rounded-md cursor-pointer bg-primary px-3 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-90"
+										>
+											Update information
+										</button>
+									</div>
+								</form>
+							</DialogPanel>
+						</div>
+					</div>
+				</Dialog>
+		)
 	}
 
 	return (
@@ -77,6 +353,7 @@ export const PageClient = ({ user, deleteUserAction }: { user: User; deleteUserA
 					<h2 className="font-semibold">Personal information</h2>
 					<button
 						type="button"
+						onClick={() => setOpenPersonal(true)}
 						className="text-sm flex items-center rounded-sm border border-neutral-200 hover:bg-neutral-700 p-3 cursor-pointer shadow-xs"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3 me-2">
@@ -113,6 +390,7 @@ export const PageClient = ({ user, deleteUserAction }: { user: User; deleteUserA
 					<h2 className="font-semibold">Company information</h2>
 					<button
 						type="button"
+						onClick={() => setOpenCompany(true)}
 						className="text-sm flex items-center rounded-sm border border-neutral-200 hover:bg-neutral-700 p-3 cursor-pointer shadow-xs"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-3 me-2">
@@ -148,6 +426,8 @@ export const PageClient = ({ user, deleteUserAction }: { user: User; deleteUserA
 					</div>
 				</div>
 			</div>
+			<EditPersonalInformation open={openPersonal} onOpenChange={setOpenPersonal}/>
+			<EditCompanyInformation open={openCompany} onOpenChange={setOpenCompany}/>
 		</div>
 	);
 };
