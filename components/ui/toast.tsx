@@ -45,7 +45,7 @@ export const Toast = (props: ToastProps) => {
                                             onClick={() => {
                                                 setShow(false)
                                             }}
-                                            className="inline-flex rounded-md text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+                                            className="inline-flex rounded-md text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-primary cursor-pointer"
                                         >
                                             <span className="sr-only">Close</span>
                                             <XMarkIcon aria-hidden="true" className="size-5" />

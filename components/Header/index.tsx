@@ -34,7 +34,7 @@ export const Header = () => {
 										width="24"
 										alt="Climatest Logo"
 										src="/assets/logo.svg"
-										className="h-8 w-auto dark:hidden relative"
+										className="h-8 w-auto relative"
 									/>
 								</div>
 								<p className="ms-4 my-0 font-bold text-xl text-white">
@@ -75,12 +75,12 @@ export const Header = () => {
 									height="24"
 									alt=""
 									src="/assets/user_photo.png"
-									className="size-8 rounded-full outline relative -outline-offset-1 outline-black/5 dark:outline-white/10"
+									className="size-8 rounded-full outline relative -outline-offset-1 outline-black/5"
 								/>
 							</div>
 							<div className="-mr-2 flex items-center sm:hidden">
 								{/* Mobile menu button */}
-								<DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600 dark:bg-gray-900 dark:text-gray-400 dark:hover:bg-white/5 dark:hover:text-white dark:focus:outline-indigo-500">
+								<DisclosureButton className="group relative inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-600">
 									<span className="absolute -inset-0.5" />
 									<span className="sr-only">Open main menu</span>
 									<Bars3Icon
@@ -115,7 +115,7 @@ export const Header = () => {
 								</DisclosureButton>
 							))}
 						</div>
-						<div className="border-t border-gray-200 pt-4 pb-3 dark:border-gray-700">
+						<div className="border-t border-gray-200 pt-4 pb-3">
 							<div className="flex items-center px-4">
 								<div className="shrink-0">
 									<Image
@@ -123,7 +123,7 @@ export const Header = () => {
 										height="24"
 										alt=""
 										src="/assets/user_photo.png"
-										className="size-8 rounded-full outline relative -outline-offset-1 outline-black/5 dark:outline-white/10"
+										className="size-8 rounded-full outline relative -outline-offset-1 outline-black/5"
 									/>
 								</div>
 								<div className="flex flex-col items-start ms-3">
