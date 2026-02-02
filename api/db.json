@@ -5,14 +5,14 @@
       "type": "service",
       "status": "deactivated",
       "firstName": "Wilkinson",
-      "lastName": "Fleming",
+      "lastName": "Flemming",
       "email": "wilkinsonfleming@exostream.com",
       "phone": "(862) 464-2651",
       "bio": "Ut consequat ullamco ut sint nostrud est sit id aliqua laboris esse nostrud. Exercitation Lorem mollit aute excepteur enim non qui nulla enim nostrud labore. Sit Lorem non anim anim labore aliqua incididunt occaecat. Enim aute excepteur mollit reprehenderit magna nisi sunt nisi velit duis nisi culpa veniam commodo. Culpa irure excepteur voluptate laborum proident. Tempor anim magna laborum non ea fugiat aliquip sit deserunt officia adipisicing esse in. Magna aute eu magna minim minim nulla mollit elit nostrud dolore ex ullamco culpa est.\r\n",
       "companyName": "Envire",
       "country": "Christmas Island",
       "city": "Nicut",
-      "postalCode": 3500,
+      "postalCode": "3500",
       "address": "Jay Street",
       "vatNumber": "BE 0631.879.378"
     },
@@ -1535,6 +1535,111 @@
       "postalCode": 3500,
       "address": "Juliana Place",
       "vatNumber": "BE 0631.879.378"
+    },
+    {
+      "id": 100
+    },
+    {
+      "id": 101
+    },
+    {
+      "id": 102
+    },
+    {
+      "type": "connect",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "Bio!",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 104
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "123",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 105
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "bio",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 106
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "bio",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 107
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "123",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 108
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "123",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 109
     }
   ]
 }
