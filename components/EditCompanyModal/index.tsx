@@ -30,7 +30,7 @@ export const EditCompanyModal = ({ open, onOpenChange, user, onSubmit }: EditCom
 							<button
 								type="button"
 								onClick={() => onOpenChange(false)}
-								className="text-white border p-3 border-neutral-400 rounded-md"
+								className="text-white cursor-pointer border p-3 border-neutral-400 rounded-md"
 							>
 								<XMarkIcon
 									aria-hidden="true"
@@ -39,9 +39,10 @@ export const EditCompanyModal = ({ open, onOpenChange, user, onSubmit }: EditCom
 							</button>
 						</div>
 						<form onSubmit={onSubmit} id="company" className="mt-8 space-y-4">
+							<h4 className="text-white font-semibold text-sm">Company information</h4>
 							<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
 								<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="companyName">
-									Name
+									Company name
 								</label>
 								<input
 									type="text"
@@ -114,7 +115,7 @@ export const EditCompanyModal = ({ open, onOpenChange, user, onSubmit }: EditCom
 							<div className="mt-5 sm:mt-6">
 								<button
 									type="submit"
-									className="inline-flex w-full justify-center rounded-md cursor-pointer bg-primary px-3 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-90"
+									className="inline-flex cursor-pointer w-full justify-center rounded-md cursor-pointer bg-primary px-3 py-2 text-sm font-semibold text-white hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:opacity-90"
 								>
 									Update information
 								</button>

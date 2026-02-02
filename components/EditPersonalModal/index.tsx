@@ -34,7 +34,7 @@ export const EditPersonalModal = ({ open, onOpenChange, user, onSubmit }: EditPe
 							<button
 								type="button"
 								onClick={() => onOpenChange(false)}
-								className="text-white border p-3 border-neutral-400 rounded-md"
+								className="text-white border p-3 cursor-pointer border-neutral-400 rounded-md"
 							>
 								<XMarkIcon
 									aria-hidden="true"
@@ -43,6 +43,7 @@ export const EditPersonalModal = ({ open, onOpenChange, user, onSubmit }: EditPe
 							</button>
 						</div>
 						<form onSubmit={onSubmit} id="personal" className="mt-8 space-y-4">
+							<h4 className="text-white font-semibold text-sm">Personal information</h4>
 							<div className="flex justify-center w-full bg-neutral-800 text-white">
 								<div className="flex flex-col flex-1 items-center justify-start px-4 py-3 rounded-md">
 									<label className="text-neutral-400 text-sm shrink-0 mb-4" htmlFor="editType">
