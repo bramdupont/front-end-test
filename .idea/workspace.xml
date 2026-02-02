@@ -4,8 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="Feat: Install NextJS">
+    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ToastProvider/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/icons/archive.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/icons/home.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/icons/messages.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/icons/search.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/assets/user_photo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilities/getStatusStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilities/getTypeStyles.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utilities/truncateText.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Filters/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Filters/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +75,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feat/dynamic-dashboard" />
-                    <option name="lastUsedInstant" value="1769951444" />
+                    <option name="lastUsedInstant" value="1770023089" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -91,36 +110,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/dynamic-dashboard&quot;,
-    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
-    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/bramdupont/Sites/front-end-test/components/Pagination&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.Biome&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;/Users/bramdupont/Sites/front-end-test/node_modules/typescript/lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feat/dynamic-dashboard",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/bramdupont/Sites/front-end-test/app/(dashboard)/archive/[id]",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "Settings.Biome",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/bramdupont/Sites/front-end-test/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/(dashboard)/archive/[id]" />
       <recent name="$PROJECT_DIR$/components/Pagination" />
       <recent name="$PROJECT_DIR$/app/(dashboard)" />
       <recent name="$PROJECT_DIR$/app/(dashboard)/dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/ui" />
       <recent name="$PROJECT_DIR$/api" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/designs" />

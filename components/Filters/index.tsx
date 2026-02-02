@@ -5,13 +5,9 @@ export const Filters = () => {
 		<div className="flex justify-between items-center">
 			<div className="flex items-center justify-start gap-4">
 				<div className="relative">
-					<Image
-						alt="search icon"
-						src="/assets/icons/search.svg"
-						width={18}
-						height={18}
-						className="absolute top-1/2 start-3 -translate-y-1/2"
-					/>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-white size-4 absolute top-1/2 start-3 -translate-y-1/2">
+						<path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+					</svg>
 					<input
 						type="search"
 						id="search"
@@ -88,15 +84,11 @@ export const Filters = () => {
 			<div>
 				<button
 					type="button"
-					className="flex items-center rounded-sm bg-primary hover:opacity-90 p-3 cursor-pointer text-white shadow-xs focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+					className="text-sm flex items-center rounded-sm bg-primary hover:opacity-90 p-3 cursor-pointer text-white shadow-xs"
 				>
-					<Image
-						src="/assets/icons/add.svg"
-						alt="Create new icon"
-						height={18}
-						width={18}
-						className="me-2"
-					/>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 me-2">
+						<path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+					</svg>
 					Create new
 				</button>
 			</div>

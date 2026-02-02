@@ -39,7 +39,7 @@ export const Header = () => {
 										height="24"
 										width="24"
 										alt="Climatest Logo"
-										src="/logo.svg"
+										src="/assets/logo.svg"
 										className="h-8 w-auto dark:hidden relative"
 									/>
 								</div>

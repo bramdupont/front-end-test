@@ -3,21 +3,11 @@ import { useState } from "react";
 import { Filters } from "@/components/Filters";
 import { Pagination } from "@/components/Pagination";
 import { User } from "@/types";
-
-const getTypeStyles = (type: string): string => {
-	return type === "connect" ? "bg-green-200" : "bg-orange-300";
-};
-
-const getStatusStyles = (status: string): string => {
-	if (status === "inactive") return "text-gray-400";
-	if (status === "deactivated") return "text-red-300";
-	return "text-white";
-};
-
-const truncateText = (text: string, maxLength: number = 20): string => {
-	if (text.length <= maxLength) return text;
-	return text.slice(0, maxLength) + "...";
-};
+import Link from "next/link";
+import {getTypeStyles} from "@/utilities/getTypeStyles";
+import {getStatusStyles} from "@/utilities/getStatusStyles";
+import {truncateText} from "@/utilities/truncateText";
+import {Toast} from "@/components/ui/toast";
 
 const MAX_ITEMS_PER_PAGE = 12;
 
@@ -26,6 +16,7 @@ export const PageClient = ({ users }: { users: User[] }) => {
 	const startIndex = (currentPage - 1) * MAX_ITEMS_PER_PAGE;
 	const endIndex = startIndex + MAX_ITEMS_PER_PAGE;
 	const paginatedUsers = users?.slice(startIndex, endIndex) || [];
+	const [showToast, setShowToast] = useState(false);
 
 	const onPageChange = (page: number) => {
 		setCurrentPage(page);
@@ -89,11 +80,13 @@ export const PageClient = ({ users }: { users: User[] }) => {
 								<tbody className="divide-y divide-white/10">
 									{paginatedUsers.map((user) => (
 										<tr key={user.id} className="hover:bg-neutral-400/10">
-											<td className="py-4 pr-3 pl-4 text-sm whitespace-nowrap text-white sm:pl-2">
+											<td className="py-4 pr-3 pl-4 text-sm whitespace-nowrap text-white sm:pl-2 cursor-pointer">
+												<Link href={`/archive/${user.id}/`}>
 												<p className="text-md">
 													{user.firstName} {user.lastName}
 												</p>
 												<p className="text-sm text-neutral-400">{user.email}</p>
+												</Link>
 											</td>
 											<td className="px-3 py-4 text-sm whitespace-nowrap text-white">
 												{user.phone}
@@ -119,8 +112,8 @@ export const PageClient = ({ users }: { users: User[] }) => {
 												</p>
 											</td>
 											<td className="py-4 pr-4 pl-3 text-right text-sm font-medium whitespace-nowrap sm:pr-0">
-												<a
-													href={`/users/${user.id}/edit`}
+												<Link
+													href={`/archive/${user.id}/`}
 													className="text-white hover:text-primary"
 												>
 													<svg
@@ -138,7 +131,7 @@ export const PageClient = ({ users }: { users: User[] }) => {
 														/>
 													</svg>
 													<span className="sr-only">, {user.id}</span>
-												</a>
+												</Link>
 											</td>
 										</tr>
 									))}
