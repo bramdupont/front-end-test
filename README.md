@@ -1,61 +1,36 @@
-# Welcome to the Climapulse Front-end Developer Test!
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Repository Setup
+## Getting Started
 
-### Create Your Own Repository
-
-After receiving the `front-end-test.zip` file, create a new GitHub repository (private or public) and push the provided setup files to your main branch without modifications.
-
-### Submitting Your Solution
-
-Once your solution is complete, share the link to your repository (and provide access if necessary). Please include instructions in the `README.md` on how to run the application.
-
-## API Setup
-
-A mock API is provided using the [json-server](https://github.com/typicode/json-server/tree/v0) package, located in the `/api` folder. To start the API, run:
+First, run the development server:
 
 ```bash
-npm install
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-Once running, you can fetch user data with:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-curl http://localhost:3000/users
-```
+You can start editing the page by modifying `app/index.tsx`. The page auto-updates as you edit the file.
 
-## Designs and Wireframes
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-**The provided designs are guidelines** and should be treated as wireframes. Pixel-perfect implementation is not required. You can find design images in the `/designs` folder, and a Figma file is available for import into your own Figma account (free accounts are supported).
+## Learn More
 
-## The Assignment
+To learn more about Next.js, take a look at the following resources:
 
-Your task is to build a web application with the pages described below, as if it were intended for production deployment.
-Each page includes optional bonus features you may choose to implement. For these, refer to the [json-server documentation](https://github.com/typicode/json-server/tree/v0?tab=readme-ov-file#routes) for available REST API options.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You are free to use any tech stack you prefer. We recommend choosing one you are most comfortable with.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### List Users Page
+## Deploy on Vercel
 
-Create a page that displays all users by fetching data from the API. When a user is clicked, navigate to their detail page (see below).
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-**API endpoint to fetch users:**
-`GET http://localhost:3000/users`
-
-#### Bonus Features
-
-- Filter the list of users
-- Add a new user
-- Implement pagination
-
-### User Detail Page
-
-Create a page that shows all details for a specific user, with an option to delete the user via a button.
-
-- **API endpoint to fetch user by ID:** `GET http://localhost:3000/users/:id`
-- **API endpoint to delete user by ID:** `DELETE http://localhost:3000/users/:id`
-
-#### Bonus Features
-
-- Edit user details
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
