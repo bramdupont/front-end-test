@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import {useState, useMemo} from "react";
 import { Filters } from "@/components/Filters";
 import { Pagination } from "@/components/Pagination";
 import { User } from "@/types";
@@ -7,16 +7,35 @@ import Link from "next/link";
 import {getTypeStyles} from "@/utilities/getTypeStyles";
 import {getStatusStyles} from "@/utilities/getStatusStyles";
 import {truncateText} from "@/utilities/truncateText";
-import {Toast} from "@/components/ui/toast";
 
 const MAX_ITEMS_PER_PAGE = 12;
 
-export const PageClient = ({ users }: { users: User[] }) => {
+export const PageClient = ({ users, createAction }: { users: User[]; createAction: any }) => {
 	const [currentPage, setCurrentPage] = useState(1);
+	const [openUserModal, setOpenUserModal] = useState(false);
+
+	const [searchQuery, setSearchQuery] = useState("");
+	const [selectedType, setSelectedType] = useState("all");
+	const [selectedState, setSelectedState] = useState("all");
+	const [selectedCompany, setSelectedCompany] = useState("all");
+
+	const filteredUsers = useMemo(() => {
+		return users.filter(user => {
+			const matchesSearch = searchQuery === "" ||
+				user.firstName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				user.lastName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				user.email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				user.phone?.toLowerCase().includes(searchQuery.toLowerCase());
+			const matchesType = selectedType === "all" || user.type === selectedType;
+			const matchesState = selectedState === "all" || user.status === selectedState;
+			const matchesCompany = selectedCompany === "all" || user.companyName === selectedCompany;
+
+			return matchesSearch && matchesType && matchesState && matchesCompany;
+		});
+	}, [users, searchQuery, selectedType, selectedState, selectedCompany]);
 	const startIndex = (currentPage - 1) * MAX_ITEMS_PER_PAGE;
 	const endIndex = startIndex + MAX_ITEMS_PER_PAGE;
-	const paginatedUsers = users?.slice(startIndex, endIndex) || [];
-	const [showToast, setShowToast] = useState(false);
+	const paginatedUsers = filteredUsers?.slice(startIndex, endIndex) || [];
 
 	const onPageChange = (page: number) => {
 		setCurrentPage(page);
@@ -25,16 +44,44 @@ export const PageClient = ({ users }: { users: User[] }) => {
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
 
-		// If parent provided onPageChange, use it (for filtered views)
 		if (onPageChange) {
 			onPageChange(page);
 			return;
 		}
 	};
 
+	const handleFilterChange = () => {
+		setCurrentPage(1);
+	};
+
 	return (
 		<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-			<Filters />
+			<Filters
+				createAction={createAction}
+				open={openUserModal}
+				onOpenChange={setOpenUserModal}
+				data={users}
+				searchQuery={searchQuery}
+				onSearchChange={(value) => {
+					setSearchQuery(value);
+					handleFilterChange();
+				}}
+				selectedType={selectedType}
+				onTypeChange={(value) => {
+					setSelectedType(value);
+					handleFilterChange();
+				}}
+				selectedState={selectedState}
+				onStateChange={(value) => {
+					setSelectedState(value);
+					handleFilterChange();
+				}}
+				selectedCompany={selectedCompany}
+				onCompanyChange={(value) => {
+					setSelectedCompany(value);
+					handleFilterChange();
+				}}
+			/>
 			<div className="px-4 sm:px-6 lg:px-8">
 				<div className="mt-8 flow-root">
 					<div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -142,7 +189,7 @@ export const PageClient = ({ users }: { users: User[] }) => {
 				</div>
 			</div>
 			<Pagination
-				totalItems={users.length}
+				totalItems={filteredUsers.length}
 				itemsPerPage={MAX_ITEMS_PER_PAGE}
 				page={currentPage}
 				onPageChange={handlePageChange}
