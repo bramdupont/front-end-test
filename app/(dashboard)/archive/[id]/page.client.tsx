@@ -7,17 +7,21 @@ import { useToast } from "@/components/ToastProvider";
 import {useState, useTransition} from 'react'
 import { EditPersonalModal } from "@/components/EditPersonalModal";
 import { EditCompanyModal } from "@/components/EditCompanyModal";
+import { DeleteConfirmationModal } from "@/components/DeleteConfirmationModal";
 
 export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user: User; deleteUserAction: DeleteUserAction; updateUserAction: UpdateUserAction }) => {
 	const router = useRouter();
 	const { showToast } = useToast();
 	const [openPersonal, setOpenPersonal] = useState(false)
 	const [openCompany, setOpenCompany] = useState(false)
+	const [openDeleteModal, setOpenDeleteModal] = useState(false)
 	const [isUpdatingDocument, startUpdatingDocument] = useTransition();
 
-	const handleDeleteClick = async (e: React.MouseEvent) => {
-		e.preventDefault();
+	const handleDeleteClick = () => {
+		setOpenDeleteModal(true);
+	}
 
+	const handleConfirmDelete = async () => {
 		try {
 			const result = await deleteUserAction() as { success: boolean };
 
@@ -195,6 +199,12 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 			</div>
 			<EditPersonalModal open={openPersonal} onOpenChange={setOpenPersonal} user={user} onSubmit={handleSubmit} />
 			<EditCompanyModal open={openCompany} onOpenChange={setOpenCompany} user={user} onSubmit={handleSubmit} />
+			<DeleteConfirmationModal
+				open={openDeleteModal}
+				onOpenChange={setOpenDeleteModal}
+				onConfirm={handleConfirmDelete}
+				userName={`${user.firstName} ${user.lastName}`}
+			/>
 		</div>
 	);
 };
