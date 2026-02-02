@@ -36,26 +36,26 @@ Each page includes optional bonus features you may choose to implement. For thes
 
 You are free to use any tech stack you prefer. We recommend choosing one you are most comfortable with.
 
-### List Users Page
+### ~~List Users Page~~
 
 Create a page that displays all users by fetching data from the API. When a user is clicked, navigate to their detail page (see below).
 
 **API endpoint to fetch users:**
 `GET http://localhost:3000/users`
 
-#### Bonus Features
+#### ~~Bonus Features~~
 
-- Filter the list of users
-- Add a new user
-- Implement pagination
+- ~~Filter the list of users~~
+- ~~Add a new user~~
+- ~~Implement pagination~~
 
-### User Detail Page
+### ~~User Detail Page~~
 
 Create a page that shows all details for a specific user, with an option to delete the user via a button.
 
 - **API endpoint to fetch user by ID:** `GET http://localhost:3000/users/:id`
 - **API endpoint to delete user by ID:** `DELETE http://localhost:3000/users/:id`
 
-#### Bonus Features
+#### ~~Bonus Features~~
 
 - Edit user details
