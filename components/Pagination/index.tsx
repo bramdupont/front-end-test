@@ -1,5 +1,4 @@
 "use client";
-// import "./pagination.scss";
 import clsx from "clsx";
 import type React from "react";
 import {

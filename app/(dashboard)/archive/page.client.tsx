@@ -2,7 +2,7 @@
 import {useState, useMemo} from "react";
 import { Filters } from "@/components/Filters";
 import { Pagination } from "@/components/Pagination";
-import { User } from "@/types";
+import { User, CreateUserAction } from "@/types";
 import Link from "next/link";
 import {getTypeStyles} from "@/utilities/getTypeStyles";
 import {getStatusStyles} from "@/utilities/getStatusStyles";
@@ -10,7 +10,7 @@ import {truncateText} from "@/utilities/truncateText";
 
 const MAX_ITEMS_PER_PAGE = 12;
 
-export const PageClient = ({ users, createAction }: { users: User[]; createAction: any }) => {
+export const PageClient = ({ users, createAction }: { users: User[]; createAction: CreateUserAction }) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [openUserModal, setOpenUserModal] = useState(false);
 
@@ -37,17 +37,8 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 	const endIndex = startIndex + MAX_ITEMS_PER_PAGE;
 	const paginatedUsers = filteredUsers?.slice(startIndex, endIndex) || [];
 
-	const onPageChange = (page: number) => {
-		setCurrentPage(page);
-	};
-
 	const handlePageChange = (page: number) => {
 		setCurrentPage(page);
-
-		if (onPageChange) {
-			onPageChange(page);
-			return;
-		}
 	};
 
 	const handleFilterChange = () => {

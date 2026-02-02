@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { User } from "@/types";
+import { User, UpdateUserAction, DeleteUserAction } from "@/types";
 import { getTypeStyles } from "@/utilities/getTypeStyles";
 import { getStatusStyles } from "@/utilities/getStatusStyles";
 import { useToast } from "@/components/ToastProvider";
@@ -8,15 +8,7 @@ import {useState, useTransition} from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import {XMarkIcon} from '@heroicons/react/24/outline'
 
-export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user: User; deleteUserAction: () => Promise<unknown>; updateUserAction: (document: FormData) => Promise<{
-		success: boolean;
-		user: any;
-		error?: undefined;
-	} | {
-		success: boolean;
-		error: string;
-		user?: undefined;
-	}>}) => {
+export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user: User; deleteUserAction: DeleteUserAction; updateUserAction: UpdateUserAction }) => {
 	const router = useRouter();
 	const { showToast } = useToast();
 	const [openPersonal, setOpenPersonal] = useState(false)
@@ -44,8 +36,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 					type: 'error'
 				});
 			}
-		} catch (error) {
-			console.error('Delete error:', error);
+		} catch {
 			showToast({
 				title: 'Error',
 				message: 'An error occurred while deleting the user.',
@@ -73,8 +64,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 						type: 'error'
 					});
 				}
-			} catch (error) {
-				console.error('Update error:', error);
+			} catch {
 				showToast({
 					title: 'Error',
 					message: 'An error occurred while updating the user.',
@@ -125,7 +115,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 									</div>
 									<form onSubmit={handleSubmit} id="personal" className="mt-8 space-y-4">
 										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="firstName">
+											<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="firstName">
 												First name
 											</label>
 											<input
@@ -137,7 +127,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 											/>
 										</div>
 										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="lastName">
+											<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="lastName">
 												Last name
 											</label>
 											<input
@@ -149,7 +139,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 											/>
 										</div>
 										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="email">
+											<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="email">
 												Email
 											</label>
 											<input
@@ -161,7 +151,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 											/>
 										</div>
 										<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="phone">
+											<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="phone">
 												Phone
 											</label>
 											<input
@@ -173,7 +163,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 											/>
 										</div>
 										<div className="bg-neutral-800 text-white flex items-start px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm w-24 flex-shrink-0 pt-3" htmlFor="bio">
+											<label className="text-neutral-400 text-sm w-24 shrink-0 pt-3" htmlFor="bio">
 												Bio
 											</label>
 											<textarea
@@ -230,7 +220,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 								</div>
 								<form onSubmit={handleSubmit} id="company" className="mt-8 space-y-4">
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="companyName">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="companyName">
 											Name
 										</label>
 										<input
@@ -242,7 +232,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="country">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="country">
 											Country
 										</label>
 										<input
@@ -254,7 +244,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="city">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="city">
 											City
 										</label>
 										<input
@@ -266,7 +256,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="postalCode">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="postalCode">
 											Postal code
 										</label>
 										<input
@@ -278,7 +268,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="address">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="address">
 											Street
 										</label>
 										<input
@@ -290,7 +280,7 @@ export const PageClient = ({ user, deleteUserAction, updateUserAction }: { user:
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="vatNumber">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="vatNumber">
 											VAT
 										</label>
 										<input

@@ -1568,22 +1568,6 @@
       "lastName": "Dupont",
       "email": "info@byteklaar.be",
       "phone": "123",
-      "bio": "123",
-      "companyName": "Byteklaar",
-      "country": "Belgium",
-      "city": "As",
-      "postalCode": "3665",
-      "address": "Lanklaarsesteenweg 31",
-      "vatNumber": "BE1000.698.817",
-      "id": 105
-    },
-    {
-      "type": "service",
-      "state": "active",
-      "firstName": "Bram",
-      "lastName": "Dupont",
-      "email": "info@byteklaar.be",
-      "phone": "123",
       "bio": "bio",
       "companyName": "Byteklaar",
       "country": "Belgium",
@@ -1640,6 +1624,22 @@
       "address": "Lanklaarsesteenweg 31",
       "vatNumber": "BE1000.698.817",
       "id": 109
+    },
+    {
+      "type": "service",
+      "state": "active",
+      "firstName": "Bram",
+      "lastName": "Dupont",
+      "email": "info@byteklaar.be",
+      "phone": "123",
+      "bio": "123",
+      "companyName": "Byteklaar",
+      "country": "Belgium",
+      "city": "As",
+      "postalCode": "3665",
+      "address": "Lanklaarsesteenweg 31",
+      "vatNumber": "BE1000.698.817",
+      "id": 110
     }
   ]
 }

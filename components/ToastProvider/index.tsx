@@ -15,6 +15,8 @@ type ToastContextType = {
 
 const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
+const TOAST_DURATION_MS = 5000;
+
 export function ToastProvider({ children }: { children: ReactNode }) {
 	const [toast, setToast] = useState<ToastConfig | null>(null);
 
@@ -22,7 +24,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
 		setToast(config);
 		setTimeout(() => {
 			setToast(null);
-		}, 5000);
+		}, TOAST_DURATION_MS);
 	};
 
 	return (

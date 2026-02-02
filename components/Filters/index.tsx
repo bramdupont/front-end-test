@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import {Dialog, DialogBackdrop, DialogPanel, DialogTitle} from "@headlessui/react";
 import {XMarkIcon} from "@heroicons/react/20/solid";
-import {User} from "@/types";
+import {User, CreateUserAction} from "@/types";
 import {useTransition} from "react";
 import {useRouter} from "next/navigation";
 import {useToast} from "@/components/ToastProvider";
@@ -18,7 +18,7 @@ type FiltersProps = {
 	onStateChange: (value: string) => void;
 	selectedCompany: string;
 	onCompanyChange: (value: string) => void;
-	createAction: any;
+	createAction: CreateUserAction;
 };
 
 export const Filters = ({
@@ -66,7 +66,6 @@ export const Filters = ({
 					});
 				}
 			} catch (error) {
-				console.error('Creating error:', error);
 				showToast({
 					title: 'Error',
 					message: 'An error occurred while creating a user.',
@@ -116,7 +115,7 @@ export const Filters = ({
 								<form onSubmit={handleSubmit} className="mt-8 space-y-4">
 									<div className="flex justify-center w-full bg-neutral-800 text-white">
 										<div className="flex flex-col flex-1 items-center justify-start px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm flex-shrink-0 mb-4" htmlFor="firstName">
+											<label className="text-neutral-400 text-sm shrink-0 mb-4" htmlFor="firstName">
 												Type <span className="text-red-400">*</span>
 											</label>
 											<div className="grid grid-cols-1 bg-neutral-700 ms-4 p-3 w-full rounded-md">
@@ -138,7 +137,7 @@ export const Filters = ({
 											</div>
 										</div>
 										<div className="flex flex-col flex-1 items-center justify-start px-4 py-3 rounded-md">
-											<label className="text-neutral-400 text-sm flex-shrink-0 mb-4" htmlFor="firstName">
+											<label className="text-neutral-400 text-sm shrink-0 mb-4" htmlFor="firstName">
 												Status<span className="text-red-400">*</span>
 											</label>
 											<div className="grid grid-cols-1 bg-neutral-700 ms-4 p-3 w-full rounded-md">
@@ -160,10 +159,9 @@ export const Filters = ({
 												/>
 											</div>
 										</div>
-
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="firstName">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="firstName">
 											First name <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -175,7 +173,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="lastName">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="lastName">
 											Last name <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -187,7 +185,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="email">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="email">
 											Email <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -199,7 +197,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="phone">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="phone">
 											Phone <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -211,7 +209,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-start px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0 pt-3" htmlFor="bio">
+										<label className="text-neutral-400 text-sm w-24 shrink-0 pt-3" htmlFor="bio">
 											Bio <span className="text-red-400">*</span>
 										</label>
 										<textarea
@@ -223,7 +221,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="companyName">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="companyName">
 											Name <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -235,7 +233,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="country">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="country">
 											Country <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -247,7 +245,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="city">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="city">
 											City <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -259,7 +257,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="postalCode">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="postalCode">
 											Postal code <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -271,7 +269,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="address">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="address">
 											Street <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -283,7 +281,7 @@ export const Filters = ({
 										/>
 									</div>
 									<div className="bg-neutral-800 text-white flex items-center px-4 py-3 rounded-md">
-										<label className="text-neutral-400 text-sm w-24 flex-shrink-0" htmlFor="vatNumber">
+										<label className="text-neutral-400 text-sm w-24 shrink-0" htmlFor="vatNumber">
 											VAT <span className="text-red-400">*</span>
 										</label>
 										<input
@@ -323,6 +321,7 @@ export const Filters = ({
 						id="search"
 						name="search"
 						placeholder="Search..."
+						aria-label="Search users"
 						value={searchQuery}
 						onChange={(e) => onSearchChange(e.target.value)}
 						className="bg-neutral-800 p-3 pl-9 text-white placeholder:neutral-500"

@@ -10,12 +10,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const user = {
-	name: "Tom Cook",
-	email: "tom@example.com",
-	imageUrl:
-		"https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 const navigation = [
 	{ name: "Home", href: "/", icon: "home" },
 	{ name: "Archive", href: "/archive", icon: "archive" },
@@ -128,17 +122,13 @@ export const Header = () => {
 										width="24"
 										height="24"
 										alt=""
-										src={user.imageUrl}
-										className="relative size-10 rounded-full outline -outline-offset-1 outline-black/5 dark:outline-white/10"
+										src="/assets/user_photo.png"
+										className="size-8 rounded-full outline relative -outline-offset-1 outline-black/5 dark:outline-white/10"
 									/>
 								</div>
-								<div className="ml-3">
-									<div className="text-base font-medium text-gray-800 dark:text-white">
-										{user.name}
-									</div>
-									<div className="text-sm font-medium text-gray-500 dark:text-gray-400">
-										{user.email}
-									</div>
+								<div className="flex flex-col items-start ms-3">
+									<p className="m-0 text-white text-sm">Paul Pols</p>
+									<p className="m-0 text-gray-400 text-sm">Online</p>
 								</div>
 							</div>
 						</div>
