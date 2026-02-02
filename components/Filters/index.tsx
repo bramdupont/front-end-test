@@ -18,6 +18,7 @@ type FiltersProps = {
 	selectedCompany: string;
 	onCompanyChange: (value: string) => void;
 	createAction: CreateUserAction;
+	isSearching?: boolean;
 };
 
 export const Filters = ({
@@ -33,6 +34,7 @@ export const Filters = ({
 	selectedCompany,
 	onCompanyChange,
 	createAction,
+	isSearching = false,
 }: FiltersProps) => {
 	const types = Array.from(new Set(data?.map(user => user.type).filter(Boolean))) as string[];
 	const states = Array.from(new Set(data?.map(user => user.status).filter(Boolean))) as string[];
@@ -87,9 +89,16 @@ export const Filters = ({
 			<CreateUserModal open={open} onOpenChange={onOpenChange} onSubmit={handleSubmit} types={types} statuses={states} />
 			<div className="flex items-center justify-start gap-4">
 				<div className="relative">
-					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-white size-4 absolute top-1/2 start-3 -translate-y-1/2">
-						<path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-					</svg>
+					{isSearching ? (
+						<svg className="text-white size-4 absolute top-1/2 start-3 -translate-y-1/2 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+							<circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+							<path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+						</svg>
+					) : (
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="text-white size-4 absolute top-1/2 start-3 -translate-y-1/2">
+							<path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+						</svg>
+					)}
 					<input
 						type="search"
 						id="search"
