@@ -1,7 +1,10 @@
 export default function Home() {
 	return (
 		<div className="flex min-h-screen items-center justify-center">
-			<main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 dark:bg-black sm:items-start"></main>
+			<main className="flex min-h-screen w-full text-center max-w-3xl flex-col items-center justify-start">
+				<h1 className="text-2xl font-bold text-center">Dashboard</h1>
+				<p className="text-center">Coming soon</p>
+			</main>
 		</div>
 	);
 }
