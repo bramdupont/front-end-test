@@ -58,4 +58,4 @@ Create a page that shows all details for a specific user, with an option to dele
 
 #### ~~Bonus Features~~
 
-- Edit user details
+- ~~Edit user details~~
