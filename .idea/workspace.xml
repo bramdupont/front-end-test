@@ -4,27 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ToastProvider/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/archive.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/home.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/messages.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/icons/search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/assets/user_photo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/getStatusStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/getTypeStyles.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utilities/truncateText.ts" afterDir="false" />
+    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="Feat: Clean-up logic and code">
+      <change afterPath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Filters/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Filters/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -102,6 +90,9 @@
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/opt/homebrew/Cellar/php/8.2.4/bin/php" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -191,7 +182,95 @@
       <option name="project" value="LOCAL" />
       <updated>1769951553189</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Feat: Add delete functionality">
+      <option name="closed" value="true" />
+      <created>1770027471929</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1770027471929</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Feat: Add Toast notifications">
+      <option name="closed" value="true" />
+      <created>1770027481116</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1770027481116</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Feat: Add filter functionality">
+      <option name="closed" value="true" />
+      <created>1770035140068</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035140068</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Feat: Default page for dashboard">
+      <option name="closed" value="true" />
+      <created>1770035153424</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035153424</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Feat: Default page for messages">
+      <option name="closed" value="true" />
+      <created>1770035162544</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035162544</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Feat: Add user updating functions">
+      <option name="closed" value="true" />
+      <created>1770035190490</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035190490</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Feat: Add functionality to create users">
+      <option name="closed" value="true" />
+      <created>1770035206756</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035206756</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Feat: Data changes">
+      <option name="closed" value="true" />
+      <created>1770035216553</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035216553</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Feat: Checkmark done tasks">
+      <option name="closed" value="true" />
+      <created>1770035223918</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035223918</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Feat: Add asset">
+      <option name="closed" value="true" />
+      <created>1770035229263</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1770035229263</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Feat: Clean-up logic and code">
+      <option name="closed" value="true" />
+      <created>1770036236262</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770036236262</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,7 +289,18 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Feat: Install NextJS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: Install NextJS" />
+    <MESSAGE value="Feat: Add delete functionality" />
+    <MESSAGE value="Feat: Add Toast notifications" />
+    <MESSAGE value="Feat: Add filter functionality" />
+    <MESSAGE value="Feat: Default page for dashboard" />
+    <MESSAGE value="Feat: Default page for messages" />
+    <MESSAGE value="Feat: Add user updating functions" />
+    <MESSAGE value="Feat: Add functionality to create users" />
+    <MESSAGE value="Feat: Data changes" />
+    <MESSAGE value="Feat: Checkmark done tasks" />
+    <MESSAGE value="Feat: Add asset" />
+    <MESSAGE value="Feat: Clean-up logic and code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: Clean-up logic and code" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

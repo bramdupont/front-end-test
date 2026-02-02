@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 4,
-      "type": "service",
-      "status": "deactivated",
+      "type": "connect",
+      "status": "active",
       "firstName": "Wilkinson",
       "lastName": "Flemming",
       "email": "wilkinsonfleming@exostream.com",

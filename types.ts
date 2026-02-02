@@ -10,7 +10,7 @@ export type User = {
 	companyName: string;
 	country: string;
 	city: string;
-	postalCode: number;
+	postalCode: string;
 	address: string;
 	vatNumber: string;
 };
