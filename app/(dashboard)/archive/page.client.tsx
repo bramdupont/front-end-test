@@ -7,6 +7,7 @@ import Link from "next/link";
 import {getTypeStyles} from "@/utilities/getTypeStyles";
 import {getStatusStyles} from "@/utilities/getStatusStyles";
 import {truncateText} from "@/utilities/truncateText";
+import { useDebounce } from "@/hooks/useDebounce";
 
 const MAX_ITEMS_PER_PAGE = 12;
 
@@ -19,20 +20,23 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 	const [selectedState, setSelectedState] = useState("all");
 	const [selectedCompany, setSelectedCompany] = useState("all");
 
+	// Debounce search query to avoid excessive filtering
+	const debouncedSearchQuery = useDebounce(searchQuery, 300);
+
 	const filteredUsers = useMemo(() => {
 		return users.filter(user => {
-			const matchesSearch = searchQuery === "" ||
-				user.firstName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				user.lastName?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				user.email?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				user.phone?.toLowerCase().includes(searchQuery.toLowerCase());
+			const matchesSearch = debouncedSearchQuery === "" ||
+				user.firstName?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+				user.lastName?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+				user.email?.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
+				user.phone?.toLowerCase().includes(debouncedSearchQuery.toLowerCase());
 			const matchesType = selectedType === "all" || user.type === selectedType;
 			const matchesState = selectedState === "all" || user.status === selectedState;
 			const matchesCompany = selectedCompany === "all" || user.companyName === selectedCompany;
 
 			return matchesSearch && matchesType && matchesState && matchesCompany;
 		});
-	}, [users, searchQuery, selectedType, selectedState, selectedCompany]);
+	}, [users, debouncedSearchQuery, selectedType, selectedState, selectedCompany]);
 	const startIndex = (currentPage - 1) * MAX_ITEMS_PER_PAGE;
 	const endIndex = startIndex + MAX_ITEMS_PER_PAGE;
 	const paginatedUsers = filteredUsers?.slice(startIndex, endIndex) || [];
@@ -44,6 +48,9 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 	const handleFilterChange = () => {
 		setCurrentPage(1);
 	};
+
+	// Check if search is being debounced
+	const isSearching = searchQuery !== debouncedSearchQuery;
 
 	return (
 		<div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,6 +79,7 @@ export const PageClient = ({ users, createAction }: { users: User[]; createActio
 					setSelectedCompany(value);
 					handleFilterChange();
 				}}
+				isSearching={isSearching}
 			/>
 			<div className="px-4 sm:px-6 lg:px-8">
 				<div className="mt-8 flow-root">
