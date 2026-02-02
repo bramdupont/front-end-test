@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="Feat: Clean-up logic and code">
-      <change afterPath="$PROJECT_DIR$/components/DeleteConfirmationModal/index.tsx" afterDir="false" />
+    <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="Feat: Update data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/page.client.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Filters/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Filters/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +266,55 @@
       <option name="project" value="LOCAL" />
       <updated>1770036236262</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Feat: Add extra labels">
+      <option name="closed" value="true" />
+      <created>1770062039745</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062039745</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Feat: Add confirmation for delete function">
+      <option name="closed" value="true" />
+      <created>1770062049462</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062049462</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Feat: Add confirmation for delete function">
+      <option name="closed" value="true" />
+      <created>1770062056397</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062056397</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Feat: Create homepage">
+      <option name="closed" value="true" />
+      <created>1770062065823</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062065823</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Feat: Remove dark styling">
+      <option name="closed" value="true" />
+      <created>1770062074093</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062074093</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Feat: Update data">
+      <option name="closed" value="true" />
+      <created>1770062082887</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1770062082887</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +344,12 @@
     <MESSAGE value="Feat: Checkmark done tasks" />
     <MESSAGE value="Feat: Add asset" />
     <MESSAGE value="Feat: Clean-up logic and code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Feat: Clean-up logic and code" />
+    <MESSAGE value="Feat: Add extra labels" />
+    <MESSAGE value="Feat: Add confirmation for delete function" />
+    <MESSAGE value="Feat: Create homepage" />
+    <MESSAGE value="Feat: Remove dark styling" />
+    <MESSAGE value="Feat: Update data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Feat: Update data" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
