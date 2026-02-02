@@ -5,14 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="01f4cf16-d880-4662-b9cf-0fccb25fa881" name="Changes" comment="Feat: Clean-up logic and code">
-      <change afterPath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/DeleteConfirmationModal/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/db.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/archive/[id]/page.client.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Filters/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Filters/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/CreateUserModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EditCompanyModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/EditPersonalModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/toast.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/toast.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +66,7 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="feat/dynamic-dashboard" />
-                    <option name="lastUsedInstant" value="1770023089" />
+                    <option name="lastUsedInstant" value="1770060512" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
@@ -109,7 +112,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feat/dynamic-dashboard",
+    "git-widget-placeholder": "#1 on feat/dynamic-dashboard",
     "js.debugger.nextJs.config.created.client": "true",
     "js.debugger.nextJs.config.created.server": "true",
     "junie.onboarding.icon.badge.shown": "true",
